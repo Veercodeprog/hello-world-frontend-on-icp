@@ -1,9 +1,9 @@
-import { html, render } from 'lit-html';
-import { hello_backend } from 'declarations/hello_backend';
-import logo from './logo2.svg';
+import { html, render } from "lit-html";
+import { hello_backend } from "declarations/hello_backend";
+import logo from "./logo2.svg";
 
 class App {
-  greeting = '';
+  greeting = "";
 
   constructor() {
     this.#render();
@@ -11,7 +11,7 @@ class App {
 
   #handleSubmit = async (e) => {
     e.preventDefault();
-    const name = document.getElementById('name').value;
+    const name = document.getElementById("name").value;
     this.greeting = await hello_backend.greet(name);
     this.#render();
   };
@@ -25,15 +25,15 @@ class App {
         <form action="#">
           <label for="name">Enter your name: &nbsp;</label>
           <input id="name" alt="Name" type="text" />
-          <button type="submit">Click Me!</button>
+          <button type="submit">Click Me now!</button>
         </form>
         <section id="greeting">${this.greeting}</section>
       </main>
     `;
-    render(body, document.getElementById('root'));
+    render(body, document.getElementById("root"));
     document
-      .querySelector('form')
-      .addEventListener('submit', this.#handleSubmit);
+      .querySelector("form")
+      .addEventListener("submit", this.#handleSubmit);
   }
 }
 
